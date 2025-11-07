@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SRM PhD — 100 Question Mock Test (Comprehensive)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f8fafc;--card:#ffffff;--muted:#4b5563;--accent:#2563eb;--text:#0f172a}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text)}
+    .container{max-width:1100px;margin:24px auto;padding:18px;border-radius:12px;background:var(--card);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,#1e3a8a,#3b82f6);color:#fff}
+    header h1{margin:0;font-size:18px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{background:#fff;padding:8px 12px;border-radius:8px;border:none;color:#1e3a8a;font-weight:600;cursor:pointer}
+    .btn.primary{background:#fff;color:#1e3a8a}
+    .search{padding:8px;border-radius:8px;border:1px solid #e5e7eb;min-width:220px}
+    main{margin-top:16px}
+    .info{font-size:13px;color:var(--muted);margin-bottom:12px}
+    .mcq-list{display:block}
+    .question{padding:12px;margin-bottom:10px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb}
+    .qhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .qtext{font-weight:600}
+    .area{font-size:12px;color:var(--muted)}
+    .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .option{padding:10px;border-radius:8px;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
+    .option:hover{background:#eef2ff}
+    .option.selected{background:#dbeafe;border-color:#93c5fd}
+    .answer{margin-top:10px;padding:10px;border-radius:8px;background:#eff6ff;display:none}
+    footer{margin-top:18px;padding:12px;text-align:center;color:#fff;background:linear-gradient(90deg,#1e3a8a,#3b82f6);border-radius:8px}
+    mark{background:#fff3cd;padding:2px 4px;border-radius:3px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>SRM PhD — 100 Question Mock Test (Moderate)</h1>
+        <div style="font-size:12px;color:#dbeafe;margin-top:4px">Mixed order — each question shows its area</div>
+      </div>
+      <div class="controls">
+        <button class="btn" onclick="window.location.href='index.html'">← Back to Index</button>
+        <input id="search" class="search" placeholder="Search questions, answers, or areas..." />
+        <button class="btn primary" id="startBtn">Load Questions</button>
+      </div>
+    </header>
+
+    <main>
+      <p class="info">Click any option to reveal the correct answer and short explanation. Use the search box to filter questions dynamically.</p>
+      <div id="questions" class="mcq-list"></div>
+    </main>
+
+    <footer>All rights reserved for Hari Babu Mutchakala.</footer>
+  </div>
+
+  <script>
+    // Data array: 100 MCQs mixed across areas (moderate difficulty).
+    // Each item: {id, q, opts:[...], a:index(0..3), expl, area}
+    const data = [
+/* --- Research Methodology & Resources (approx 15) --- */
+{ id:1, q:"Which statement best describes the primary objective of applied research?", opts:["To explore new theories","To generate knowledge for a specific practical problem","To collect opinions","To document historical facts"], a:1, expl:"Applied research aims to solve practical problems by applying scientific methods to real-world issues.", area:"Research Methodology" },
+{ id:2, q:"What is the main purpose of pilot testing a questionnaire?", opts:["Increase sample size","Identify confusing questions and estimate response time","Replace the research hypothesis","Finalize the literature review"], a:1, expl:"Pilot testing reveals problems with wording, order, and timing, helping refine the questionnaire.", area:"Research Methodology" },
+{ id:3, q:"Which section of a research proposal explains the expected contribution to knowledge?", opts:["Methodology","Literature review","Objectives and significance","Budget"], a:2, expl:"Objectives and significance justify why the study matters and what new understanding it will provide.", area:"Research Methodology" },
+{ id:4, q:"What is Type I error in hypothesis testing?", opts:["Accepting a false null hypothesis","Rejecting a false null hypothesis","Rejecting a true null hypothesis","Failing to collect data"], a:2, expl:"Type I error is rejecting the null hypothesis when it is actually true (false positive).", area:"Research Methodology" },
+{ id:5, q:"Which technique helps generate new research topics by identifying gaps in existing studies?", opts:["Pilot study","Systematic literature review","Random sampling","Descriptive stats"], a:1, expl:"A systematic literature review helps find unanswered questions and gaps for new research topics.", area:"Research Methodology" },
+{ id:6, q:"Which ethical issue is directly addressed by using plagiarism detection tools?", opts:["Data privacy","Authorship disputes","Plagiarism","Human subject consent"], a:2, expl:"Plagiarism tools detect copied text, helping enforce originality and proper citation.", area:"Research Ethics & IPR" },
+{ id:7, q:"Informed consent in research primarily protects:", opts:["The researcher’s data","Research participants' autonomy and rights","The funding agency","The institution"], a:1, expl:"Informed consent ensures participants understand and voluntarily agree to the study, safeguarding their rights.", area:"Research Ethics & IPR" },
+{ id:8, q:"Which of the following is NOT a component of a well-written research hypothesis?", opts:["Testability","Specificity","Vagueness","Measurable variables"], a:2, expl:"A good hypothesis must be specific and testable; vagueness makes it unsuitable for testing.", area:"Research Methodology" },
+{ id:9, q:"What is the role of a literature review in a research proposal?", opts:["Collect primary data","Establish theoretical context and show gaps","Define sample size only","Guarantee publication"], a:1, expl:"Literature reviews summarize prior work and position the proposed study within existing knowledge, highlighting gaps.", area:"Research Methodology" },
+{ id:10, q:"Which document is most important to verify a student's credentials during admission's interview presentation?", opts:["Research proposal alone","Scanned ID, UG & PG certificates","Only UG mark sheet","An email confirmation"], a:1, expl:"ID and academic certificates verify identity and qualifications before the proposal presentation.", area:"Research Administration" },
+{ id:11, q:"Which method is best for justifying the feasibility of a PhD research topic?", opts:["A long bibliography","A feasibility analysis including resources, timeframe, and data availability","Only supervisor’s opinion","Assuming unlimited resources"], a:1, expl:"Feasibility analysis examines practical aspects like data access, equipment, and time to ensure the project can be completed.", area:"Research Methodology" },
+{ id:12, q:"Which of these indicates good research objective phrasing?", opts:["To study everything about X","To examine the effect of A on B under conditions C","To do research on topic X","To write a thesis"], a:1, expl:"Clear objectives specify variables, relationships, and conditions, making them measurable and testable.", area:"Research Methodology" },
+{ id:13, q:"Which is an advantage of using online databases for literature search?", opts:["Limited results","Faster access to current and peer-reviewed articles","Only old publications available","Expensive to use always"], a:1, expl:"Online databases provide quick access to a broad set of up-to-date scholarly works and peer-reviewed articles.", area:"Research Resources" },
+{ id:14, q:"A good research record of literature review should include:", opts:["Only article titles","Critical summaries, key methods, and gaps identified","Full text of every paper","Only the abstracts"], a:1, expl:"A record should capture key findings, methods, and identified gaps to guide new research.", area:"Research Resources" },
+{ id:15, q:"Which IPR form protects inventions and technical methods?", opts:["Copyright","Trademark","Patent","Trade secret"], a:2, expl:"Patents protect inventions and technical methods, granting exclusive rights for a period.", area:"Research Ethics & IPR" },
+
+/* --- Data Collection, Analysis & Modelling (approx 20) --- */
+{ id:16, q:"Which sampling method divides the population into homogeneous subgroups and samples each?", opts:["Cluster sampling","Simple random sampling","Stratified sampling","Convenience sampling"], a:2, expl:"Stratified sampling ensures representation from each subgroup (stratum).", area:"Sampling & Data Collection" },
+{ id:17, q:"Which distribution models counts of rare events per interval?", opts:["Normal","Binomial","Poisson","Uniform"], a:2, expl:"Poisson distribution models counts of events occurring independently in fixed intervals.", area:"Probability & Distributions" },
+{ id:18, q:"Which test is appropriate to compare means of two small independent samples (normality assumed)?", opts:["Chi-square test","Student's t-test","ANOVA","F-test"], a:1, expl:"Student's t-test compares means of two groups when sample sizes are small and normality holds.", area:"Statistical Tests" },
+{ id:19, q:"In sampling, increasing sample size generally leads to:", opts:["Higher sampling error","Lower sampling error","More bias","No change"], a:1, expl:"Larger samples reduce standard error, improving estimate precision (not bias).", area:"Sampling & Data Collection" },
+{ id:20, q:"Which measure best describes central tendency when data has outliers?", opts:["Arithmetic mean","Median","Mode","Range"], a:1, expl:"Median is robust to outliers and better represents central tendency for skewed data.", area:"Descriptive Statistics" },
+{ id:21, q:"Which is a continuous distribution describing waiting times between Poisson events?", opts:["Binomial","Exponential","Uniform","Geometric"], a:1, expl:"Exponential distribution models time between independent Poisson events.", area:"Probability & Distributions" },
+{ id:22, q:"Which technique helps check questionnaire reliability across items?", opts:["Content validity","Cronbach's alpha","Face validity","Interrater reliability only"], a:1, expl:"Cronbach's alpha measures internal consistency of scale items.", area:"Questionnaire Design & Validation" },
+{ id:23, q:"Which sampling method is efficient when population is geographically clustered?", opts:["Stratified sampling","Cluster sampling","Simple random sampling","Systematic sampling"], a:1, expl:"Cluster sampling samples entire clusters (e.g., villages) reducing travel and cost when clusters are natural.", area:"Sampling & Data Collection" },
+{ id:24, q:"Which test assesses independence between two categorical variables?", opts:["t-test","Chi-square test","Correlation test","ANOVA"], a:1, expl:"Chi-square test of independence checks association between categorical variables.", area:"Statistical Tests" },
+{ id:25, q:"If data are not normally distributed, which test compares two independent samples?", opts:["Independent t-test","Wilcoxon rank-sum (Mann–Whitney) test","Pearson correlation","Chi-square"], a:1, expl:"Mann–Whitney test is a nonparametric alternative to the t-test.", area:"Statistical Tests" },
+{ id:26, q:"Which method is used for estimating sample size for proportion estimation with desired margin of error?", opts:["Use of z-score formula with p estimate","Chi-square distribution","ANOVA table","No need to estimate"], a:0, expl:"Sample-size formula for proportions uses z (confidence), estimated p, and desired margin of error.", area:"Sampling & Data Collection" },
+{ id:27, q:"In time series forecasting, which method accounts for trend and seasonality?", opts:["Simple moving average","Exponential smoothing with trend/seasonality (Holt–Winters)","Median smoothing","Random sampling"], a:1, expl:"Holt–Winters exponential smoothing models level, trend, and seasonal components.", area:"Time Series & Forecasting" },
+{ id:28, q:"Which method finds best-fit parameters by minimizing sum of squared errors?", opts:["Maximum likelihood estimation","Least squares estimation","Bayes theorem","Hypothesis testing"], a:1, expl:"Ordinary least squares finds coefficients minimizing squared residuals in regression.", area:"Regression & Inference" },
+{ id:29, q:"Which design reduces variability by grouping similar experimental units together?", opts:["Completely randomized design","Randomized block design","Latin square design","Factorial design"], a:1, expl:"Randomized block design groups homogeneous units in blocks to control variability.", area:"Experimental Design" },
+{ id:30, q:"Which technique is used for modeling complex systems when closed-form solutions are hard?", opts:["Analytic derivation","System simulation (Monte Carlo)","Simple counting","Hand calculation"], a:1, expl:"Simulation (Monte Carlo) approximates behavior using repeated random sampling for complex systems.", area:"Mathematical Modelling & Simulation" },
+{ id:31, q:"Which distribution approximates binomial when n is large and p not near 0 or 1?", opts:["Poisson","Exponential","Normal (with continuity correction)","Geometric"], a:2, expl:"Normal approximation to the binomial works when n is large and p not too close to 0 or 1.", area:"Probability & Distributions" },
+{ id:32, q:"Which analysis method examines relationship between several independent variables and one dependent?", opts:["Simple correlation","Multiple regression","ANOVA one-way","Chi-square"], a:1, expl:"Multiple regression models a dependent variable using multiple predictors.", area:"Regression & Inference" },
+{ id:33, q:"Which test compares variances from two independent normal samples?", opts:["Student's t-test","F-test","Chi-square test","Wilcoxon test"], a:1, expl:"F-test compares ratio of variances from two normal populations.", area:"Statistical Tests" },
+{ id:34, q:"Which is a nonparametric method for testing independence with small expected counts?", opts:["Chi-square without correction","Fisher's exact test","t-test","ANOVA"], a:1, expl:"Fisher's exact test is appropriate for small cell counts in contingency tables.", area:"Statistical Tests" },
+{ id:35, q:"Which optimization technique is population-based and inspired by natural selection?", opts:["Simulated annealing","Genetic Algorithm","Gradient descent","Newton-Raphson"], a:1, expl:"Genetic algorithms use populations, selection, crossover, and mutation to search for optima.", area:"Optimization & Modelling" },
+
+/* --- Core Computer Science (approx 35) --- */
+{ id:36, q:"In an OS, which scheduling algorithm can cause starvation of long jobs?", opts:["Round Robin","Shortest Job First (non-preemptive)","First-Come First-Served","Multilevel queue without aging"], a:1, expl:"SJF favors short jobs and may starve long ones unless aging is used.", area:"Operating Systems" },
+{ id:37, q:"Which memory management scheme uses fixed-size pages and page tables?", opts:["Segmentation","Paging (virtual memory)","Contiguous allocation","Linked allocation"], a:1, expl:"Paging divides memory into fixed-size pages and uses page tables for translation.", area:"Operating Systems" },
+{ id:38, q:"Which algorithm is used to detect deadlock avoidance by ensuring safe states?", opts:["Banker’s algorithm","Dijkstra's algorithm","Bellman-Ford","Floyd-Warshall"], a:0, expl:"Banker’s algorithm determines if resource allocation leaves the system in a safe state to avoid deadlocks.", area:"Operating Systems" },
+{ id:39, q:"Which parsing method is top-down and may require removing left recursion from grammars?", opts:["LR parsing","Recursive descent (predictive) parsing","Shift-reduce parsing","CYK algorithm"], a:1, expl:"Recursive descent/predictive parsers are top-down and cannot handle left-recursive grammars without modification.", area:"Compiler Design" },
+{ id:40, q:"Which data structure is best for implementing function call stacks and recursive calls?", opts:["Queue","Heap","Stack","Binary tree"], a:2, expl:"Stacks follow LIFO, ideal for function calls and storing return addresses.", area:"Data Structures & Algorithms" },
+{ id:41, q:"Which sorting algorithm has average-case time complexity O(n log n) and is in-place?", opts:["Insertion sort","Merge sort","Quick sort","Bubble sort"], a:2, expl:"Quick sort has average O(n log n) time and can be implemented in-place (though worst-case O(n²)).", area:"Data Structures & Algorithms" },
+{ id:42, q:"Which B-tree property makes it suitable for disk-based databases?", opts:["High height","Nodes with many children (high branching) reducing disk accesses","Requires only RAM","Single-child nodes"], a:1, expl:"B-trees keep height low by storing many keys per node, reducing disk reads.", area:"Data Structures & Databases" },
+{ id:43, q:"Which normal form removes transitive dependencies?", opts:["1NF","2NF","3NF","BCNF"], a:2, expl:"3NF eliminates transitive dependencies that cause redundancy.", area:"Databases" },
+{ id:44, q:"Which SQL clause filters rows after aggregation?", opts:["WHERE","GROUP BY","HAVING","ORDER BY"], a:2, expl:"HAVING filters groups after aggregation, while WHERE filters rows before grouping.", area:"Databases" },
+{ id:45, q:"Which TCP characteristic ensures reliable, ordered delivery?", opts:["UDP's datagram model","TCP's sequence numbers and acknowledgments","No acknowledgments","Statelessness"], a:1, expl:"TCP uses sequence numbers, ACKs, and retransmission for reliable ordered delivery.", area:"Computer Networks" },
+{ id:46, q:"Which network device operates at the data link layer to forward frames based on MAC addresses?", opts:["Router","Switch","Hub","Gateway"], a:1, expl:"Switches forward frames within a LAN using MAC address tables at layer 2.", area:"Computer Networks" },
+{ id:47, q:"Which software development model emphasizes short iterations, frequent feedback, and sprints?", opts:["Waterfall","Spiral","Scrum (Agile)","V-Model"], a:2, expl:"Scrum uses iterative sprints and regular feedback, core to Agile methods.", area:"Software Engineering" },
+{ id:48, q:"Which UML diagram best models object interactions over time (message sequence)?", opts:["Class diagram","Sequence diagram","Use-case diagram","Activity diagram"], a:1, expl:"Sequence diagrams show interactions between objects as messages over time.", area:"Software Engineering" },
+{ id:49, q:"In compiler design, three-address code is an example of:", opts:["Source code","Intermediate code","Machine code","Object code"], a:1, expl:"Three-address code is an intermediate representation independent of target machine.", area:"Compiler Design" },
+{ id:50, q:"Which hashing technique dynamically expands to handle growing data gracefully?", opts:["Static hashing","Dynamic hashing (e.g., extendible hashing)","Chaining with fixed table","Linear probing only"], a:1, expl:"Dynamic hashing grows the index structure (e.g., directory doubling) to reduce collisions.", area:"Data Structures & Databases" },
+{ id:51, q:"Which graph algorithm finds a minimum spanning tree?", opts:["Dijkstra's algorithm","Prim's and Kruskal's algorithms","Bellman-Ford","Ford-Fulkerson"], a:1, expl:"Prim and Kruskal are MST algorithms based on different strategies.", area:"Algorithms & Graph Theory" },
+{ id:52, q:"Which CPU scheduling metric measures average time taken from submission to completion?", opts:["Turnaround time","Waiting time","Response time","Throughput"], a:0, expl:"Turnaround time is completion time minus submission time.", area:"Operating Systems" },
+{ id:53, q:"Which concurrency control method uses locks to serialize access to shared resources?", opts:["Optimistic concurrency without locks","Two-phase locking (2PL)","No synchronization","Random scheduling"], a:1, expl:"Two-phase locking coordinates locks to ensure serializability in transactions.", area:"Databases & OS" },
+{ id:54, q:"Which storage structure is a priority queue implemented by a heap?", opts:["Stack","Queue","Heap","Graph"], a:2, expl:"Heaps efficiently implement priority queues supporting min/max extraction.", area:"Data Structures & Algorithms" },
+{ id:55, q:"Which technique reduces code size and combines multiple simple instructions into one in CISC processors?", opts:["RISC philosophy","Microcode & complex instructions (CISC)","Vectorization only","No-compute"], a:1, expl:"CISC uses complex instructions and microcode to perform multiple tasks in single instructions.", area:"Digital Logic & Computer Architecture" },
+{ id:56, q:"Which design pattern provides a single global instance and controlled access to it?", opts:["Factory","Observer","Singleton","Decorator"], a:2, expl:"Singleton ensures one instance with global access point.", area:"Software Engineering" },
+{ id:57, q:"Which OS structure translates virtual addresses to physical addresses at runtime?", opts:["Compiler","MMU (Memory Management Unit)","Linker","Loader"], a:1, expl:"MMU implements address translation using page tables for virtual memory.", area:"Operating Systems" },
+{ id:58, q:"Which network protocol suite provides internet routing and addressing (IPv4/IPv6)?", opts:["OSI protocols only","TCP/IP","NetBEUI","IPX/SPX"], a:1, expl:"TCP/IP suite, including IP, provides addressing/routing for internetworking.", area:"Computer Networks" },
+{ id:59, q:"Which file organization is best for transaction processing with frequent insert/delete operations?", opts:["Heap file with good cluster management","Sequential files only","Indexed sequential without updates","Archived tape"], a:0, expl:"Heap files allow flexible insertion/deletion; good indexing and clustering can improve performance.", area:"Databases" },
+{ id:60, q:"Which compiler phase checks types and ensures semantic correctness?", opts:["Lexical analysis","Syntax analysis","Semantic analysis","Code generation"], a:2, expl:"Semantic analysis validates types, scopes, and other language-semantic rules.", area:"Compiler Design" },
+{ id:61, q:"Which sorting algorithm guarantees O(n log n) worst-case time and uses extra memory for merging?", opts:["Quick sort","Merge sort","Heap sort","Bubble sort"], a:1, expl:"Merge sort guarantees O(n log n) worst-case but uses extra O(n) space.", area:"Algorithms" },
+
+/* --- Mathematics & Logic (approx 30) --- */
+{ id:62, q:"If P(A)=0.6 and P(B)=0.5 and A and B are independent, P(A∩B) = ?", opts:["0.1","0.3","0.5","0.6"], a:1, expl:"For independent events, P(A∩B)=P(A)P(B)=0.6×0.5=0.3.", area:"Probability" },
+{ id:63, q:"Which measure of central tendency is least affected by outliers?", opts:["Mean","Median","Mode","Variance"], a:1, expl:"The median is robust to extreme values, unlike the mean.", area:"Statistics" },
+{ id:64, q:"Which distribution is symmetric and defined by mean μ and variance σ²?", opts:["Poisson","Exponential","Normal","Binomial"], a:2, expl:"Normal distribution is symmetric around mean μ with variance σ².", area:"Probability & Distributions" },
+{ id:65, q:"Which is a discrete distribution for number of successes in fixed n Bernoulli trials?", opts:["Normal","Exponential","Binomial","Uniform"], a:2, expl:"Binomial describes counts of successes in n independent Bernoulli trials.", area:"Probability & Distributions" },
+{ id:66, q:"The determinant of a 2×2 matrix [[a,b],[c,d]] is:", opts:["a+d","ad−bc","ac+bd","ab+cd"], a:1, expl:"Determinant = ad − bc.", area:"Linear Algebra" },
+{ id:67, q:"If matrix A is orthogonal, then A^{-1} = ?", opts:["A^T","A","−A","A^2"], a:0, expl:"Orthogonal matrices satisfy A^{-1} = A^T.", area:"Linear Algebra" },
+{ id:68, q:"Which property does a relation have if for all a, (a,a) is in R?", opts:["Symmetric","Transitive","Reflexive","Antisymmetric"], a:2, expl:"Reflexive relation contains (a,a) for all a in the set.", area:"Set Theory & Relations" },
+{ id:69, q:"Number of permutations of 5 distinct objects is:", opts:["25","60","120","24"], a:2, expl:"5! = 120 permutations.", area:"Combinatorics" },
+{ id:70, q:"Which test is typically used to check convergence of a positive-term infinite series Σ a_n by comparing ratio a_{n+1}/a_n?", opts:["Comparison test","Ratio test","Integral test","Alternating series test"], a:1, expl:"Ratio test examines the limit of |a_{n+1}/a_n| to assess convergence.", area:"Sequences & Series" },
+{ id:71, q:"Which graph concept denotes a set of vertices with no edges among them?", opts:["Vertex cover","Independent set","Clique","Path"], a:1, expl:"Independent set: vertices pairwise non-adjacent.", area:"Graph Theory" },
+{ id:72, q:"Which operation gives the greatest lower bound (meet) in a lattice?", opts:["Union","Join","Complement","Meet (∧)"], a:3, expl:"Meet (∧) returns the greatest lower bound of two elements.", area:"Lattices & Boolean Algebra" },
+{ id:73, q:"If f(x)=x^3, f'(x) = ?", opts:["2x","3x^2","x^2","3x"], a:1, expl:"Derivative of x^3 is 3x^2.", area:"Calculus" },
+{ id:74, q:"Which technique helps solve linear system AX=B using determinants (for small systems)?", opts:["Gaussian elimination","Cramer's Rule","LU decomposition","Jacobi method"], a:1, expl:"Cramer's rule uses determinants to solve small linear systems.", area:"Linear Algebra" },
+{ id:75, q:"Which is true for a planar graph?", opts:["It can always be drawn without edge crossings","It is always bipartite","It has no cycles","It is 3-colorable always"], a:0, expl:"Planar graphs can be drawn in the plane without edge crossings.", area:"Graph Theory" },
+{ id:76, q:"Which is the sum of probabilities of all outcomes in a probability distribution?", opts:["Less than 1","Equal to 1","Greater than 1","Depends on distribution"], a:1, expl:"Total probability across sample space equals 1.", area:"Probability" },
+{ id:77, q:"If random variable X ~ Poisson(λ), mean and variance equal:", opts:["λ and λ","λ and λ^2","√λ and λ","0 and λ"], a:0, expl:"Poisson distribution has mean = variance = λ.", area:"Probability & Distributions" },
+{ id:78, q:"Which boolean identity is De Morgan's law?", opts:["(A∪B)' = A'∩B'","A∩(B∪C) = (A∩B)∪(A∩C)","A∪∅ = A","A∩A = A"], a:0, expl:"De Morgan: complement of union is intersection of complements.", area:"Boolean Algebra" },
+{ id:79, q:"Which counting formula gives combinations (order not important)?", opts:["n!/(n−r)!","n!/(r!(n−r)!)","n^r","r^n"], a:1, expl:"Number of combinations C(n,r) = n!/[r!(n−r)!].", area:"Combinatorics" },
+{ id:80, q:"Eigenvalues of a triangular matrix are:", opts:["Zeros only","Diagonal entries","Product of first row","Sum of columns"], a:1, expl:"Eigenvalues equal the diagonal entries for triangular matrices.", area:"Linear Algebra" },
+{ id:81, q:"If sequence a_n has limit L, then the sequence is:", opts:["Divergent","Convergent to L","Oscillatory","Undefined"], a:1, expl:"Convergent sequences approach a finite limit L.", area:"Sequences & Series" },
+{ id:82, q:"Which is the general solution of dy/dx = ky (k constant)?", opts:["y = C e^{kx}","y = kx + C","y = C ln x","No solution"], a:0, expl:"Exponential solution y = C e^{kx} solves dy/dx = ky.", area:"Differential Equations" },
+{ id:83, q:"Which is true for binomial distribution with parameters n and p?", opts:["Mean = np, Variance = np(1−p)","Mean = p, Variance = n","Mean = n, Variance = p","Mean = np^2, Variance = n(1−p)"], a:0, expl:"Binomial mean = np; variance = np(1−p).", area:"Probability & Distributions" },
+{ id:84, q:"Which is an equivalence relation property?", opts:["Reflexive, symmetric, transitive","Reflexive only","Antisymmetric only","Symmetric only"], a:0, expl:"Equivalence relations satisfy reflexivity, symmetry, and transitivity.", area:"Set Theory & Relations" },
+{ id:85, q:"Which is the Laplace transform used for in ODE solving?", opts:["Change of variables in algebra","Converting differential equations into algebraic equations","Computing determinants","Plotting graphs"], a:1, expl:"Laplace transforms convert ODEs to algebraic equations easier to solve.", area:"Differential Equations & Calculus" },
+
+/* --- More Core CS and Math to reach 100 --- */
+{ id:86, q:"Which network layer provides end-to-end communication services and reliability?", opts:["Data Link","Network","Transport","Physical"], a:2, expl:"Transport layer (e.g., TCP) handles end-to-end communication and reliability.", area:"Computer Networks" },
+{ id:87, q:"Which normalization form disallows partial dependency on a composite key?", opts:["1NF","2NF","3NF","BCNF"], a:1, expl:"2NF removes partial dependencies on part of a composite key.", area:"Databases" },
+{ id:88, q:"Which algorithm guarantees shortest paths from a single source on graphs with non-negative weights?", opts:["Bellman-Ford","Dijkstra's algorithm","Prim's algorithm","Kruskal's algorithm"], a:1, expl:"Dijkstra computes shortest paths for non-negative edge weights.", area:"Algorithms & Graph Theory" },
+{ id:89, q:"Which OS mechanism isolates processes and provides an address space per process?", opts:["Segmentation with paging (virtual memory)","Only file system","Network sockets","Device drivers"], a:0, expl:"Virtual memory via segmentation/paging isolates process address spaces.", area:"Operating Systems" },
+{ id:90, q:"Which is true about AVL trees?", opts:["They are unbalanced BSTs","They maintain height balance by rotations","They use hashing","They are linear structures"], a:1, expl:"AVL trees are self-balancing binary search trees using rotations to maintain height difference ≤1.", area:"Data Structures & Algorithms" },
+{ id:91, q:"Which concept relates to preventing SQL injection attacks?", opts:["Using dynamic SQL with string concatenation","Using parameterized queries / prepared statements","Disabling database backups","Using plaintext credentials"], a:1, expl:"Parameterized queries prevent injection by separating code and data.", area:"Databases & Security" },
+{ id:92, q:"Which complexity class describes algorithms with polynomial time behavior?", opts:["P","NP-complete","EXP","LOG"], a:0, expl:"Class P contains decision problems solvable in polynomial time.", area:"Algorithms & Theory" },
+{ id:93, q:"Which is a property of Red-Black trees (balanced BST)?", opts:["All nodes are red","No left child allowed","Black-height property guaranteeing O(log n) operations","Always a complete tree"], a:2, expl:"Red-Black trees enforce color properties giving balanced height O(log n).", area:"Data Structures" },
+{ id:94, q:"Which is typical of synchronous transmission vs. asynchronous?", opts:["Requires start/stop bits per byte","Uses continuous bit stream with shared clock","No clock synchronization","Slower baud always"], a:1, expl:"Synchronous uses a shared clock and sends continuous streams without per-byte start/stop bits.", area:"Computer Networks & Data Communication" },
+{ id:95, q:"Which is the minimal number of edges in a connected graph with n vertices?", opts:["n","n−1","n+1","2n"], a:1, expl:"A tree with n vertices has exactly n−1 edges, the minimal to be connected.", area:"Graph Theory" },
+{ id:96, q:"Which is the main idea of dynamic programming?", opts:["Greedy local decisions only","Divide and conquer with overlapping subproblems and memoization","Randomized heuristic","Brute force only"], a:1, expl:"Dynamic programming stores solutions to overlapping subproblems to avoid recomputation.", area:"Algorithms" },
+{ id:97, q:"Which experimental design handle two blocking factors with minimal experiments using Latin Square?", opts:["Completely randomized design","Randomized block design","Latin square design","Factorial without blocks"], a:2, expl:"Latin square controls two blocking factors by arranging treatments in a square.", area:"Experimental Design" },
+{ id:98, q:"Which search method for a sorted array requires O(log n) time?", opts:["Linear search","Binary search","Interpolation sort","Exhaustive search"], a:1, expl:"Binary search divides search interval in half each step, O(log n).", area:"Algorithms & Data Structures" },
+{ id:99, q:"Which operation on relations corresponds to a join in relational algebra?", opts:["Projection","Selection","Cartesian product followed by selection","Union"], a:2, expl:"Join is implemented via Cartesian product followed by selection (and projection).", area:"Databases" },
+{ id:100, q:"Which is a good practice when designing questionnaires to avoid bias?", opts:["Leading questions","Complex jargon","Use neutral wording and pilot test","Only include closed questions"], a:2, expl:"Neutral wording and pilot testing reduce bias and improve clarity.", area:"Questionnaire Design" }
+    ];
+
+    const container = document.getElementById('questions');
+    const startBtn = document.getElementById('startBtn');
+    const search = document.getElementById('search');
+
+    // Render function
+    function render(list){
+      container.innerHTML = '';
+      list.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        div.dataset.id = item.id;
+        div.innerHTML = `
+          <div class="qhead">
+            <div>
+              <div class="qtext">Q${idx+1}. ${escapeHtml(item.q)}</div>
+              <div style="margin-top:6px;font-size:13px;color:var(--muted)">${escapeHtml(item.expl)}</div>
+            </div>
+            <div class="area">[Area: ${escapeHtml(item.area)}]</div>
+          </div>
+        `;
+        // Replace the explanation in qhead above intentionally shows short expl to help searches,
+        // but real explanation appears in answer box. We'll keep short text above and full in answer.
+        // Now options:
+        const opts = document.createElement('div'); opts.className = 'options';
+        item.opts.forEach((o,i) => {
+          const op = document.createElement('div');
+          op.className = 'option';
+          op.innerHTML = `<strong>${String.fromCharCode(65+i)}.</strong> ${escapeHtml(o)}`;
+          op.onclick = () => selectOption(item.id, i, op, item);
+          opts.appendChild(op);
+        });
+        div.appendChild(opts);
+        const ans = document.createElement('div');
+        ans.className = 'answer';
+        ans.innerHTML = `<strong>Answer:</strong> ${String.fromCharCode(65+item.a)}<br><span style="display:block;margin-top:6px" class="muted">${escapeHtml(item.expl)}</span>`;
+        div.appendChild(ans);
+        container.appendChild(div);
+      });
+    }
+
+    function selectOption(qid, choice, el, item){
+      const qDiv = document.querySelector(`.question[data-id='${qid}']`);
+      qDiv.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      // show answer block
+      const answerEl = qDiv.querySelector('.answer');
+      answerEl.style.display = 'block';
+      // Optionally scroll into view a little
+      //qDiv.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    // Escape helper to avoid accidental HTML injection
+    function escapeHtml(text){
+      if(!text && text !== 0) return '';
+      return String(text).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+    }
+
+    // Shuffle data for mixed random order when loading
+    function shuffleArr(a){
+      for(let i=a.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [a[i],a[j]] = [a[j],a[i]];
+      }
+    }
+
+    startBtn.onclick = ()=>{
+      // create a shallow copy and shuffle it
+      const arr = data.slice();
+      shuffleArr(arr);
+      render(arr);
+    };
+
+    // Search functionality: filters questions by query present in q, opts, expl, area
+    search.addEventListener('input', ()=>{
+      const term = search.value.trim().toLowerCase();
+      if(!term){
+        // if no term, render empty until Load Questions is clicked (for performance); but if already loaded, show all
+        const loaded = container.children.length > 0;
+        if(loaded){
+          // re-render current order (do nothing)
+        }
+        return;
+      }
+      // Filter current data (search across full dataset)
+      const filtered = data.filter(d=>{
+        return d.q.toLowerCase().includes(term) ||
+               d.opts.join(' ').toLowerCase().includes(term) ||
+               d.expl.toLowerCase().includes(term) ||
+               d.area.toLowerCase().includes(term);
+      });
+      // Keep the filtered order randomized for fairness
+      const arr = filtered.slice();
+      shuffleArr(arr);
+      render(arr);
+    });
+
+    // Pre-load all questions (shuffled) on initial load for usability
+    (function init(){
+      const arr = data.slice();
+      shuffleArr(arr);
+      render(arr);
+    })();
+
+  </script>
+</body>
+</html>
