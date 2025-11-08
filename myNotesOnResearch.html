@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FCAF Lifecycle — Diagram & Explanation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8fafc; --card:#ffffff; --muted:#4b5563; --accent:#2563eb; --text:#0f172a;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text)}
+  .wrap{max-width:1100px;margin:28px auto;padding:22px;border-radius:12px;background:var(--card);box-shadow:0 8px 30px rgba(12,32,63,0.06)}
+  header{background:linear-gradient(90deg,#1e3a8a,#3b82f6);color:#fff;padding:18px;border-radius:8px;text-align:center}
+  h1{margin:0;font-size:20px}
+  p.lead{color:#e0f2fe;margin:8px 0 0}
+  .content{display:grid;grid-template-columns:420px 1fr;gap:20px;margin-top:18px}
+  aside{background:#fbfdff;border:1px solid #e6eefc;padding:14px;border-radius:10px}
+  .section-title{color:var(--accent);font-weight:700;margin-bottom:8px}
+  .note{font-size:14px;color:var(--muted);line-height:1.5}
+  .diagram{background:#fff;border:1px solid #e5e7eb;padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(12,32,63,0.04)}
+  .explain{padding:14px;background:#fbfdff;border-radius:10px;border:1px solid #e9f0ff}
+  ul{padding-left:18px}
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{padding:8px;text-align:left;border-bottom:1px solid #eef2ff}
+  .caption{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+  .small{font-size:13px;color:var(--muted)}
+  button.copy{background:var(--accent);color:#fff;padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
+  @media (max-width:880px){ .content{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>FCAF — Lifecycle Diagram & Practical Explanation</h1>
+      <p class="lead">Visualizing how local training, Differential Privacy (DP), Homomorphic Encryption (HE), and secure aggregation combine in a multi-cloud federated setup.</p>
+    </header>
+
+    <div class="content">
+      <aside>
+        <div class="section-title">Quick Steps (at-a-glance)</div>
+        <div class="note">
+          <ol>
+            <li><strong>Local training:</strong> Each cloud trains a model on its private data.</li>
+            <li><strong>Apply DP:</strong> Add controlled noise to model updates (protect individuals).</li>
+            <li><strong>Encrypt with HE:</strong> Encrypt the noisy updates so aggregation can be done on ciphertext.</li>
+            <li><strong>Secure aggregation:</strong> Aggregator combines encrypted updates (verifiably) and updates global model.</li>
+            <li><strong>Redistribute:</strong> Global model sent back; local nodes continue next round.</li>
+          </ol>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="section-title">Local Training Requirements</div>
+          <table>
+            <tr><th>Component</th><th class="small">Why needed</th></tr>
+            <tr><td>Compute (GPU/CPU)</td><td class="small">Train local model iterations</td></tr>
+            <tr><td>ML framework</td><td class="small">TensorFlow / PyTorch / Scikit-learn</td></tr>
+            <tr><td>DP Library</td><td class="small">e.g., TensorFlow Privacy — to add calibrated noise</td></tr>
+            <tr><td>HE Library</td><td class="small">e.g., Microsoft SEAL / PALISADE — encrypt gradients</td></tr>
+            <tr><td>Federation SDK / API</td><td class="small">Communication with aggregator (gRPC/HTTPS)</td></tr>
+            <tr><td>Secure Channel</td><td class="small">TLS/Mutual TLS for transport</td></tr>
+          </table>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="section-title">Real-time Example (short)</div>
+          <div class="note">
+            Three hospitals train locally on patient records. Each adds DP noise, encrypts updates with HE, sends ciphertext to aggregator, which computes a verifiable aggregate and returns a stronger global model — all without sharing raw patient data.
+          </div>
+        </div>
+      </aside>
+
+      <main>
+        <div class="diagram">
+          <!-- Inline SVG diagram -->
+          <svg viewBox="0 0 980 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FCAF lifecycle diagram" style="width:100%;height:auto">
+            <defs>
+              <linearGradient id="gA" x1="0" x2="1">
+                <stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#1e3a8a"/>
+              </linearGradient>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0b1726" flood-opacity="0.08"/>
+              </filter>
+            </defs>
+
+            <!-- Cloud nodes -->
+            <g font-family="Inter, Arial, sans-serif">
+              <rect x="30"  y="30" width="250" height="90" rx="10" fill="#fff" stroke="#e6eefc"/>
+              <text x="48" y="56" font-size="15" font-weight="700" fill="#0f172a">Cloud A (Local)</text>
+              <text x="48" y="76" font-size="12" fill="#4b5563">Local training • private dataset</text>
+
+              <rect x="365" y="30" width="250" height="90" rx="10" fill="#fff" stroke="#e6eefc"/>
+              <text x="383" y="56" font-size="15" font-weight="700" fill="#0f172a">Cloud B (Local)</text>
+              <text x="383" y="76" font-size="12" fill="#4b5563">Local training • private dataset</text>
+
+              <rect x="700" y="30" width="250" height="90" rx="10" fill="#fff" stroke="#e6eefc"/>
+              <text x="718" y="56" font-size="15" font-weight="700" fill="#0f172a">Cloud C (Local)</text>
+              <text x="718" y="76" font-size="12" fill="#4b5563">Local training • private dataset</text>
+            </g>
+
+            <!-- Arrows down -->
+            <g stroke="#9CA3AF" stroke-width="2" fill="none">
+              <path d="M155 120 L155 170" stroke-linecap="round"/>
+              <path d="M490 120 L490 170" stroke-linecap="round"/>
+              <path d="M825 120 L825 170" stroke-linecap="round"/>
+            </g>
+
+            <!-- DP box -->
+            <g>
+              <rect x="230" y="170" width="520" height="70" rx="10" fill="#fff" stroke="#e6eefc" filter="url(#soft)"/>
+              <text x="250" y="200" font-size="14" font-weight="700" fill="#0f172a">Differential Privacy (DP)</text>
+              <text x="250" y="218" font-size="12" fill="#4b5563">Add calibrated noise to local model updates (Laplace / Gaussian)</text>
+            </g>
+
+            <!-- Arrow to HE -->
+            <g stroke="#9CA3AF" stroke-width="2" fill="none">
+              <path d="M490 240 L490 280" stroke-linecap="round"/>
+            </g>
+
+            <!-- HE box -->
+            <g>
+              <rect x="360" y="280" width="260" height="70" rx="10" fill="#fff" stroke="#e6eefc" filter="url(#soft)"/>
+              <text x="380" y="310" font-size="14" font-weight="700" fill="#0f172a">Homomorphic Encryption (HE)</text>
+              <text x="380" y="328" font-size="12" fill="#4b5563">Encrypt noisy updates so aggregator computes on ciphertext</text>
+            </g>
+
+            <!-- Arrow to Aggregator -->
+            <g stroke="#9CA3AF" stroke-width="2" fill="none">
+              <path d="M490 350 L490 400" stroke-linecap="round"/>
+            </g>
+
+            <!-- Aggregator box -->
+            <g>
+              <rect x="300" y="400" width="380" height="110" rx="14" fill="url(#gA)" filter="url(#soft)"/>
+              <text x="325" y="435" font-size="16" font-weight="800" fill="#fff">Secure Aggregator (verifiable)</text>
+              <text x="325" y="458" font-size="12" fill="#e0f2fe">Aggregates encrypted & noisy updates • privacy budget manager • adaptive sync</text>
+              <text x="325" y="476" font-size="12" fill="#e0f2fe">Model store • versioning • rollback</text>
+            </g>
+
+            <!-- Arrow from aggregator to global -->
+            <g stroke="#9CA3AF" stroke-width="2" fill="none">
+              <path d="M490 510 L490 560" stroke-linecap="round"/>
+            </g>
+
+            <!-- Global model -->
+            <g>
+              <rect x="420" y="560" width="140" height="70" rx="10" fill="#fff" stroke="#e6eefc"/>
+              <text x="440" y="590" font-size="14" font-weight="700" fill="#0f172a">Global Model</text>
+              <text x="428" y="608" font-size="12" fill="#4b5563">Updated & redistributed</text>
+            </g>
+
+            <!-- Distribution arrows back to clouds (curved) -->
+            <g stroke="#9CA3AF" stroke-width="2" fill="none">
+              <path d="M480 560 C430 520 160 380 155 200" stroke-linecap="round"/>
+              <path d="M500 560 C500 520 500 380 490 200" stroke-linecap="round"/>
+              <path d="M520 560 C600 520 900 380 825 200" stroke-linecap="round"/>
+            </g>
+
+            <!-- small labels -->
+            <text x="560" y="330" font-size="12" fill="#374151">Encrypted updates (ciphertext)</text>
+            <text x="120" y="150" font-size="12" fill="#374151">Local DP + HE</text>
+            <text x="760" y="150" font-size="12" fill="#374151">Local DP + HE</text>
+
+          </svg>
+
+          <div class="caption">Figure: FCAF lifecycle — local training, DP (noise), HE (encryption), secure aggregation, global model redistribution.</div>
+        </div>
+
+        <div style="margin-top:14px" class="explain">
+          <div style="font-weight:700;margin-bottom:8px">Step-by-step (what happens during one federated round)</div>
+          <ol>
+            <li><strong>Local training:</strong> Each cloud performs one or more local epochs on its private dataset producing model updates (gradients / weights).</li>
+            <li><strong>Apply DP:</strong> Each update is perturbed with calibrated noise to protect individual contributions (privacy budget ε tracked).</li>
+            <li><strong>Encrypt (HE):</strong> The noisy update is encrypted using a homomorphic scheme so the aggregator can compute on ciphertext.</li>
+            <li><strong>Transmit securely:</strong> Encrypted updates are sent over TLS to aggregator; network-level interception yields no plaintext.</li>
+            <li><strong>Secure aggregation:</strong> Aggregator verifies integrity, aggregates (e.g., weighted FedAvg / FedProx) without seeing raw updates, updates global model, and tracks privacy budget.</li>
+            <li><strong>Redistribute:</strong> Global model is distributed back; nodes update local models and proceed to next round until convergence.</li>
+          </ol>
+
+          <div style="margin-top:10px">
+            <div style="font-weight:700">Why both DP & HE?</div>
+            <ul>
+              <li><strong>DP</strong> prevents attackers from inferring an individual's data from model updates (statistical protection).</li>
+              <li><strong>HE</strong> protects the updates in transit and during aggregation (cryptographic protection).</li>
+              <li>Together they form <em>dual-layer protection</em> — mitigates reverse-engineering and eavesdropping simultaneously.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="explain">
+          <div style="font-weight:700">Short practical checklist before deployment</div>
+          <ul>
+            <li>Choose DP mechanism (Laplace/Gaussian) and set privacy budget (ε).</li>
+            <li>Select HE scheme suitable for operations (CKKS for approximate, BFV/CKKS depending on needs).</li>
+            <li>Decide aggregation strategy (FedAvg / FedProx) and weighting rules (by data size, reliability).</li>
+            <li>Implement adaptive synchronization (time-outs, staleness thresholds) to handle stragglers.</li>
+            <li>Run end-to-end tests with synthetic data to validate convergence, latency, and privacy metrics.</li>
+          </ul>
+        </div>
+
+      </main>
+    </div>
+
+    <div style="margin-top:18px;text-align:center">
+      <button class="copy" onclick="copySVG()">Copy SVG markup</button>
+      <div class="small" style="margin-top:8px">You can copy the SVG markup to paste into other docs or modify labels/colors as needed.</div>
+    </div>
+
+  </div>
+
+<script>
+  function copySVG(){
+    try{
+      const svg = document.querySelector('.diagram svg');
+      const serializer = new XMLSerializer();
+      const svgString = serializer.serializeToString(svg);
+      navigator.clipboard.writeText(svgString);
+      alert('SVG markup copied to clipboard — paste into HTML or an SVG editor.');
+    }catch(e){
+      alert('Sorry — copying failed. You can right-click and save the page or view source.');
+    }
+  }
+</script>
+</body>
+</html>
