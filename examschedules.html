@@ -29,6 +29,61 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
             border-bottom: 4px solid #60a5fa;
         }
+/* Enhanced Header Layout */
+/* Enhanced Header Layout - No Overlap */
+header {
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+    color: white;
+    padding: 28px 32px 48px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    border-bottom: 4px solid #60a5fa;
+    position: relative;
+}
+
+/* Header content alignment */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: left;
+}
+
+/* Logo */
+.header-logo {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+/* Title block */
+.header-text {
+    text-align: left;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.header-tagline {
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 6px;
+    opacity: 0.9;
+}
+
+/* Author on right-bottom */
+.header-author {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.9;
+    white-space: nowrap;
+}
 
         /* Navigation */
         nav {
@@ -177,14 +232,56 @@
 </head>
 
 <body>
-    <header>Doctoral Research Workspace</header>
+<header>
+    <div class="header-container">
+
+        <!-- Cloud + AI Convergence Logo (SVG) -->
+        <svg class="header-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Cloud and AI Logo">
+            <!-- Cloud -->
+            <path d="M20 40h26a10 10 0 0 0 0-20 14 14 0 0 0-27-3A9 9 0 0 0 20 40z"
+                  fill="#e0f2fe" opacity="0.9" />
+            <!-- AI Nodes -->
+            <circle cx="26" cy="34" r="2.5" fill="#1e40af"/>
+            <circle cx="32" cy="30" r="2.5" fill="#1e40af"/>
+            <circle cx="38" cy="34" r="2.5" fill="#1e40af"/>
+            <line x1="26" y1="34" x2="32" y2="30" stroke="#1e40af" stroke-width="1.5"/>
+            <line x1="32" y1="30" x2="38" y2="34" stroke="#1e40af" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Title & Tagline -->
+        <div class="header-text">
+            <div class="header-title">Doctoral Research Workspace</div>
+            <div class="header-tagline">
+                A Living Platform for Doctoral Insight & Research Evolution
+            </div>
+        </div>
+    </div>
+
+    <!-- Author -->
+    <div class="header-author">
+        Hari Babu Mutchakala
+    </div>
+</header>
+
 
     <nav>
         <ul>
-            <li><a href="#">Home</a>
+            <li><a href="index.html">Home</a>
                 <ul>
-                    <li><a href="about.html">About Exam</a></li>
-                    <li><a href="updates.html">Latest Updates</a></li>
+                    <li><a href="index.html">Main</a></li>
+                    <li><a href="updates.html">Latest Updates from SRM/Guide</a></li>
+                    <li><a href="examschedules.html">SRM Entrance Exam Schedule</a></li>
+
+                </ul>
+            </li>
+                     <li><a href="#">Research Resources</a>
+                <ul>
+                    <li><a href="myResearch.html">myResearch</a></li>
+                    <li><a href="proposedresearch.html">Proposed Research</a></li>
+                    <li><a href="myNotesOnResearch.html">MyNotes</a></li>
+                    <li><a href="hphe.html">Differential Privacy and Homomorphic Encryption</a></li>
+                    <li><a href="phdsynopsys.html">Synopsis for DC Meeting</a></li>
+
                 </ul>
             </li>
             <li><a href="#">Research Methodology</a>
@@ -205,11 +302,9 @@
                     <li><a href="compilerdesign.html">Compiler Design</a></li>
                     <li><a href="ds.html">Data Structures and Algorithms</a></li>
                     <li><a href="cn.html">Computer Networks</a></li>
-
                     <li><a href="dbms.html">Database Systems</a></li>
                     <li><a href="dlm.html">Digital Logic and Microprocessors</a></li>
                     <li><a href="se.html">Software Engineering</a></li>
-
 
                 </ul>
             </li>
@@ -231,28 +326,32 @@
 
                 </ul>
             </li>
-            <li><a href="#">Mock Tests</a>
+
+
+            <li><a href="#">Scholarly Review & Feedback</a>
                 <ul>
+                    <li><a href="#">Research Trends</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Feedback from Guide</a></li>
+                    <li><a href="#">Progress Tracker</a></li>
+                    <li><a href="#">MockTests</a>
+                                 <ul>
                     <li><a href="mock1.html">Test Set 1</a></li>
                     <li><a href="mock2.html">Test Set 2</a></li>
                 </ul>
+                </li>
+                </ul>
             </li>
-            <li><a href="#">Research Resources</a>
-                <ul>
-                    <li><a href="myResearch.html">myResearch</a></li>
-                    <li><a href="proposedresearch.html">Proposed Research</a></li>
-                    <li><a href="myNotesOnResearch.html">MyNotes</a></li>
-                    <li><a href="hphe.html">Differential Privacy and Homomorphic Encryption</a></li>
-                    <li><a href="phdsynopsys.html">Synopsis for DC Meeting</a></li>
 
-                </ul>
-            </li>
-            <li><a href="#">Contact</a>
+            <li><a href="#">Validations</a>
                 <ul>
-                    <li><a href="helpdesk.html">Helpdesk</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="mock1.html">Mock Test Set 1</a></li>
+                    <li><a href="mock2.html">Mock Test Set 2</a></li>
                 </ul>
             </li>
+
+
+
         </ul>
     </nav>
 

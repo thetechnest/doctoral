@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Research Ethics Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:Inter;
+  background:#f0f7ff;
+}
+
+header {
+  background:linear-gradient(90deg,#1e3a8a,#3b82f6);
+  color:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+button {
+  padding:8px 14px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.back-btn {
+  background:white;
+  color:#1e3a8a;
+  font-weight:600;
+}
+
+.container {
+  max-width:900px;
+  margin:30px auto;
+  padding:20px;
+}
+
+.card {
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+
+.option {
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin-top:8px;
+  cursor:pointer;
+}
+
+.option:hover {
+  background:#dbeafe;
+}
+
+.correct { background:#bbf7d0; }
+.wrong { background:#fecaca; }
+
+.leaderboard {
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+<h2>Ethics Quiz 🚀</h2>
+</header>
+
+<div class="container">
+
+<div class="card">
+<input id="username" placeholder="Enter your name" style="padding:10px;width:100%;border-radius:8px;border:1px solid #ccc;">
+<button onclick="startQuiz()" style="margin-top:10px;background:#2563eb;color:white;">Start Quiz</button>
+</div>
+
+<div id="quiz"></div>
+
+<div id="result" class="card" style="display:none"></div>
+
+<div class="card leaderboard">
+<h3>🏆 Leaderboard</h3>
+<ul id="leaderboard"></ul>
+</div>
+
+</div>
+
+<script>
+
+const questions = [
+  {
+    q:"What is plagiarism?",
+    options:["Copying without credit","Creating data","Changing data","Publishing twice"],
+    answer:0
+  },
+  {
+    q:"Fabrication means?",
+    options:["Fake data","Real data","Copying","Analysis"],
+    answer:0
+  },
+  {
+    q:"Falsification means?",
+    options:["Changing data","Creating data","Copying","Reporting"],
+    answer:0
+  },
+  {
+    q:"Selective reporting leads to?",
+    options:["Bias","Accuracy","Truth","Transparency"],
+    answer:0
+  },
+  {
+    q:"Research integrity means?",
+    options:["Honesty","Speed","Publishing more","Shortcuts"],
+    answer:0
+  }
+];
+
+let current = 0;
+let score = 0;
+let user = "";
+
+function startQuiz(){
+  user = document.getElementById("username").value;
+  if(!user) return alert("Enter name!");
+  document.getElementById("quiz").innerHTML="";
+  current=0; score=0;
+  loadQuestion();
+}
+
+function loadQuestion(){
+  if(current>=questions.length){
+    showResult();
+    return;
+  }
+
+  const q = questions[current];
+
+  let html = `<div class="card"><h3>${q.q}</h3>`;
+  q.options.forEach((opt,i)=>{
+    html += `<div class="option" onclick="select(${i},this)">${opt}</div>`;
+  });
+  html += `</div>`;
+
+  document.getElementById("quiz").innerHTML = html;
+}
+
+function select(i,el){
+  const q = questions[current];
+  const options = document.querySelectorAll(".option");
+
+  options.forEach(o=>o.onclick=null);
+
+  if(i===q.answer){
+    el.classList.add("correct");
+    score++;
+  } else {
+    el.classList.add("wrong");
+    options[q.answer].classList.add("correct");
+  }
+
+  setTimeout(()=>{
+    current++;
+    loadQuestion();
+  },800);
+}
+
+function showResult(){
+  document.getElementById("quiz").innerHTML="";
+  const res = document.getElementById("result");
+  res.style.display="block";
+  res.innerHTML = `<h3>Score: ${score}/${questions.length}</h3>`;
+
+  saveScore(user,score);
+  loadLeaderboard();
+}
+
+function saveScore(name,score){
+  let data = JSON.parse(localStorage.getItem("scores")||"[]");
+  data.push({name,score});
+  data.sort((a,b)=>b.score-a.score);
+  localStorage.setItem("scores",JSON.stringify(data.slice(0,5)));
+}
+
+function loadLeaderboard(){
+  let data = JSON.parse(localStorage.getItem("scores")||"[]");
+  const list = document.getElementById("leaderboard");
+  list.innerHTML="";
+  data.forEach(d=>{
+    list.innerHTML += `<li>${d.name} - ${d.score}</li>`;
+  });
+}
+
+loadLeaderboard();
+
+</script>
+
+</body>
+</html>
