@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit VI - Databases & Research Metrics</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #f4f7fb;
+}
+
+header {
+    background: linear-gradient(135deg, #1c3b57, #2c5364);
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+.section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 { color: #2c5364; }
+
+.card {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+.card:hover { transform: translateY(-3px); }
+
+.answer {
+    display: none;
+    margin-top: 10px;
+    color: #444;
+}
+
+.card.active .answer { display: block; }
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: #2c5364;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Unit VI – Databases & Research Metrics</h1>
+<p>Mastering Research Visibility & Impact</p>
+<style>
+.back-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #2c5364, #0f2027);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.back-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+</style>
+
+<button class="back-btn" onclick="window.location.href='index.html'">
+⬅ Back to Home
+</button>
+</header>
+
+<div class="container">
+
+<!-- IMPORTANT POINTS -->
+<div class="section">
+<h2>📌 Important Points to Remember</h2>
+<ul>
+<li>Scopus & Web of Science = trusted databases</li>
+<li>Always check indexing before publishing</li>
+<li>Impact Factor ≠ everything, but still important</li>
+<li>h-index reflects your academic strength</li>
+<li>Altmetrics show real-world impact</li>
+<li>Never trust fake metrics</li>
+</ul>
+</div>
+
+<!-- HOW TO START -->
+<div class="section">
+<h2>🎓 As a PhD Scholar – How to Start?</h2>
+<p>
+Start by exploring Scopus and Web of Science. Identify journals in your research area. 
+Study their impact factor and scope. Learn how citations work. Track your own research metrics.
+</p>
+
+<p>
+To become a strong scholar:
+</p>
+<ul>
+<li>Understand metrics deeply (not just definitions)</li>
+<li>Publish in indexed journals only</li>
+<li>Improve citation quality, not quantity</li>
+<li>Collaborate with researchers</li>
+<li>Promote your work (Google Scholar, LinkedIn)</li>
+</ul>
+</div>
+
+<!-- STORY SCRIPT -->
+<div class="section">
+<h2>🎤 Speak Like a “Pro Doctoral Fellow”</h2>
+<p>
+“When I started my PhD journey, I realized that publishing a paper is not just about writing — 
+it’s about strategy. I began exploring databases like Scopus and Web of Science to understand 
+where high-quality research is published.
+</p>
+
+<p>
+Gradually, I understood research metrics like Impact Factor, h-index, and CiteScore. 
+These are not just numbers — they represent the influence of knowledge.
+</p>
+
+<p>
+Today, I focus not only on publishing but on publishing in the right journals, 
+ensuring my work reaches global audiences and creates real impact.”
+</p>
+</div>
+
+<!-- 2 MARKS -->
+<div class="section">
+<h2>📝 2 Marks Questions</h2>
+
+<div class="card"><b>Q1: What is Scopus?</b>
+<div class="answer">Scopus is a large citation database that indexes high-quality journals and tracks citations.</div></div>
+
+<div class="card"><b>Q2: What is Web of Science?</b>
+<div class="answer">A trusted citation database used to evaluate journal and research quality.</div></div>
+
+<div class="card"><b>Q3: What is Impact Factor?</b>
+<div class="answer">Average citations received per paper in a journal.</div></div>
+
+<div class="card"><b>Q4: What is CiteScore?</b>
+<div class="answer">A Scopus metric measuring average citations per document.</div></div>
+
+<div class="card"><b>Q5: What is SNIP?</b>
+<div class="answer">Measures contextual citation impact across fields.</div></div>
+
+<div class="card"><b>Q6: What is SJR?</b>
+<div class="answer">Ranks journals based on prestige and citations.</div></div>
+
+<div class="card"><b>Q7: What is h-index?</b>
+<div class="answer">Number of papers with at least same number of citations.</div></div>
+
+<div class="card"><b>Q8: What is g-index?</b>
+<div class="answer">Gives weight to highly cited papers.</div></div>
+
+<div class="card"><b>Q9: What is i10-index?</b>
+<div class="answer">Number of papers with 10+ citations.</div></div>
+
+<div class="card"><b>Q10: What are altmetrics?</b>
+<div class="answer">Measures online attention like social media mentions.</div></div>
+
+</div>
+
+<!-- 5 MARKS -->
+<div class="section">
+<h2>📝 5 Marks Questions</h2>
+
+<div class="card"><b>Q1: Explain indexing databases.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain Indexing Databases</h3>
+
+<p><b>Definition:</b><br>
+Indexing databases are organized digital platforms that list and categorize high-quality academic journals and research articles to ensure visibility, accessibility, and credibility of scholarly work.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+Indexing databases act as quality filters in academic publishing. Journals included in reputed indexing databases are evaluated based on strict criteria such as peer review process, editorial standards, citation impact, and publication ethics. Being indexed increases the trust and recognition of a journal and the research published in it.
+</p>
+
+<ul>
+<li><b>Quality Control:</b> Only journals meeting standards are indexed</li>
+<li><b>Visibility:</b> Research becomes discoverable worldwide</li>
+<li><b>Credibility:</b> Indexed journals are considered reliable</li>
+<li><b>Standardization:</b> Maintains uniform publishing practices</li>
+</ul>
+
+<p><b>Examples of Indexing Databases:</b></p>
+<ul>
+<li><b>Scopus:</b> Large abstract and citation database</li>
+<li><b>Web of Science:</b> High-quality citation indexing platform</li>
+<li><b>PubMed:</b> Biomedical research database</li>
+<li><b>IEEE Xplore:</b> Engineering and technology research database</li>
+</ul>
+
+<p><b>Example:</b><br>
+A PhD scholar checks whether a journal is indexed in Scopus before submitting a paper. If indexed, it ensures the journal meets international standards.
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Helps select credible journals for publication</li>
+<li>Ensures research is recognized globally</li>
+<li>Supports PhD requirements (many universities require indexed publications)</li>
+<li>Improves chances of citations and academic growth</li>
+</ul>
+
+<p><b>How to Use Indexing Databases:</b></p>
+<ul>
+<li>Search for journals in your research area</li>
+<li>Verify indexing status before submission</li>
+<li>Check journal metrics and scope</li>
+<li>Avoid non-indexed or fake journals</li>
+</ul>
+
+<p><b>Conclusion:</b><br>
+Indexing databases play a vital role in maintaining research quality and visibility, making them essential tools for PhD scholars aiming for credible and impactful publications.
+</p>
+
+</div></div></div>
+
+<div class="card"><b>Q2: Explain citation databases.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain Citation Databases</h3>
+
+<p><b>Definition:</b><br>
+Citation databases are specialized digital platforms that track, record, and analyze how research articles cite one another, helping measure the impact and influence of scholarly work.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+Citation databases go beyond simple indexing by showing relationships between research papers through citations. They allow researchers to see how often a paper is cited, who cited it, and how knowledge flows across studies. These databases are essential for evaluating research quality, identifying influential papers, and tracking academic performance.
+</p>
+
+<ul>
+<li><b>Citation Tracking:</b> Shows how many times a paper is cited</li>
+<li><b>Impact Analysis:</b> Helps measure research influence</li>
+<li><b>Author Metrics:</b> Supports calculation of h-index, g-index, etc.</li>
+<li><b>Research Trends:</b> Identifies popular and emerging topics</li>
+</ul>
+
+<p><b>Examples of Citation Databases:</b></p>
+<ul>
+<li><b>Web of Science:</b> Provides citation indexing and Impact Factor data</li>
+<li><b>Scopus:</b> Offers citation tracking and author metrics</li>
+<li><b>Google Scholar:</b> Freely accessible citation database with broad coverage</li>
+</ul>
+
+<p><b>Example:</b><br>
+A PhD scholar publishes a paper and later checks Scopus to see how many times it has been cited. This helps measure the impact of their research.
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Tracks citations of your research work</li>
+<li>Helps improve academic profile and h-index</li>
+<li>Identifies influential papers and researchers</li>
+<li>Supports literature review and research gap analysis</li>
+</ul>
+
+<p><b>How to Use Citation Databases:</b></p>
+<ul>
+<li>Search for your research topic or author name</li>
+<li>Analyze citation counts and trends</li>
+<li>Track your own publications and citations</li>
+<li>Use citation data to improve research strategy</li>
+</ul>
+
+<p><b>Conclusion:</b><br>
+Citation databases are powerful tools for measuring research impact and guiding academic growth, making them essential for PhD scholars aiming to build a strong research profile.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q3: Explain Impact Factor.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain Impact Factor</h3>
+
+<p><b>Definition:</b><br>
+Impact Factor (IF) is a measure used to evaluate the importance or influence of a journal based on the average number of citations received by its articles over a specific period.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+Impact Factor is calculated annually by Journal Citation Reports (JCR). It reflects how frequently articles in a journal are cited in a given time period, usually over the previous two years.
+</p>
+
+<p><b>Formula:</b><br>
+Impact Factor = Citations received in current year / Number of articles published in previous 2 years
+</p>
+
+<ul>
+<li>Indicates journal quality and influence</li>
+<li>Higher IF → more influential journal</li>
+<li>Used for comparing journals within a field</li>
+</ul>
+
+<p><b>Example:</b><br>
+If a journal published 100 papers in the last 2 years and those papers received 500 citations this year, then:
+<br><b>Impact Factor = 500 / 100 = 5</b>
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Helps select high-quality journals</li>
+<li>Improves research visibility and credibility</li>
+<li>Important for thesis submission requirements</li>
+<li>Enhances academic profile and career opportunities</li>
+</ul>
+
+<p><b>How to Use Impact Factor Effectively:</b></p>
+<ul>
+<li>Check IF from official sources (JCR)</li>
+<li>Compare journals in your research field</li>
+<li>Do not rely only on IF — also check indexing and scope</li>
+<li>Avoid fake impact factor claims</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine a teacher gives homework to students. If many students refer to a particular student's notes, it means those notes are very useful.
+<br><br>
+Similarly, if many researchers cite (use) articles from a journal, that journal is considered important. The more citations, the higher the Impact Factor.
+</p>
+
+<p><b>Conclusion:</b><br>
+Impact Factor is a key indicator of journal quality and influence, helping PhD scholars choose the right platform for publishing impactful research.
+</p>
+
+</div></div></div>
+
+<div class="card"><b>Q4: Explain SNIP.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain SNIP (Source Normalized Impact per Paper)</h3>
+
+<p><b>Definition:</b><br>
+SNIP (Source Normalized Impact per Paper) is a journal metric that measures a journal’s impact by considering the differences in citation practices across different research fields.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+Unlike Impact Factor, SNIP adjusts for the fact that some fields (like medicine) cite more frequently than others (like mathematics). It normalizes citation counts so that journals from different disciplines can be fairly compared.
+</p>
+
+<ul>
+<li>Accounts for subject field differences</li>
+<li>Allows fair comparison across disciplines</li>
+<li>Based on contextual citation impact</li>
+<li>Provided by Scopus (Elsevier)</li>
+</ul>
+
+<p><b>Example:</b><br>
+A medical journal may receive many citations because that field publishes frequently, while a mathematics journal may receive fewer citations. SNIP adjusts this difference and evaluates both journals fairly based on their field norms.
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Helps compare journals across different subjects</li>
+<li>Useful for interdisciplinary research</li>
+<li>Supports better journal selection decisions</li>
+<li>Provides more accurate evaluation than raw citation counts</li>
+</ul>
+
+<p><b>How to Use SNIP Effectively:</b></p>
+<ul>
+<li>Check SNIP score in Scopus sources</li>
+<li>Compare journals within and across fields</li>
+<li>Use along with other metrics (IF, SJR)</li>
+<li>Choose journals with balanced and strong SNIP values</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine two exams:
+<br>
+In one exam, students usually score very high (easy subject).  
+In another exam, students score lower (difficult subject).
+<br><br>
+If someone scores 80 in a tough exam, it may be better than scoring 90 in an easy exam.
+<br><br>
+Similarly, SNIP adjusts scores based on how “easy or hard” it is to get citations in a subject, making comparison fair.
+</p>
+
+<p><b>Conclusion:</b><br>
+SNIP is an advanced and fair metric that helps evaluate journals by considering subject differences, making it highly useful for PhD scholars selecting journals across disciplines.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q5: Explain SJR.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain SJR (SCImago Journal Rank)</h3>
+
+<p><b>Definition:</b><br>
+SJR (SCImago Journal Rank) is a journal metric that measures the scientific influence of a journal by considering both the number of citations received and the prestige of the journals from which those citations come.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+SJR is based on the idea that not all citations are equal. Citations from highly reputed journals are given more weight than citations from less influential journals. It is similar to how ranking systems consider the quality of the source, not just the quantity.
+</p>
+
+<ul>
+<li>Measures both citation count and source prestige</li>
+<li>Gives higher weight to citations from reputed journals</li>
+<li>Helps identify influential journals</li>
+<li>Based on Scopus data</li>
+</ul>
+
+<p><b>Example:</b><br>
+If a journal receives 10 citations from top-ranked journals, it may have a higher SJR than another journal that receives 20 citations from low-quality journals. This is because SJR values quality over quantity.
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Helps identify high-prestige journals</li>
+<li>Supports better journal selection decisions</li>
+<li>Improves research visibility and credibility</li>
+<li>Useful for evaluating journal reputation</li>
+</ul>
+
+<p><b>How to Use SJR Effectively:</b></p>
+<ul>
+<li>Check SJR score in Scopus/SCImago website</li>
+<li>Compare journals within your research field</li>
+<li>Use SJR along with SNIP and Impact Factor</li>
+<li>Prefer journals with higher SJR values</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine two students:
+<br>
+One student is praised by top teachers, and another is praised by average students.
+<br><br>
+Even if both receive the same number of praises, the one praised by top teachers is considered more impressive.
+<br><br>
+Similarly, SJR gives more importance to citations coming from high-quality journals.
+</p>
+
+<p><b>Conclusion:</b><br>
+SJR is a powerful metric that evaluates both the quantity and quality of citations, helping PhD scholars choose prestigious and impactful journals for publication.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q6: Explain IPP.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain IPP (Impact per Publication)</h3>
+
+<p><b>Definition:</b><br>
+IPP (Impact per Publication) is a journal metric that measures the average number of citations received per paper published in a journal over a specific period, typically three years.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+IPP calculates how many citations, on average, each article in a journal receives. Unlike some metrics, it does not adjust for subject differences or citation prestige—it simply focuses on the average citation impact of publications.
+</p>
+
+<ul>
+<li>Measures average citations per article</li>
+<li>Based on a 3-year citation window</li>
+<li>Does not normalize across disciplines</li>
+<li>Provided through Scopus-related metrics</li>
+</ul>
+
+<p><b>Example:</b><br>
+If a journal publishes 200 papers over three years and receives 600 citations, then:
+<br><b>IPP = 600 / 200 = 3</b><br>
+This means each paper receives an average of 3 citations.
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Helps understand average performance of a journal</li>
+<li>Useful for comparing journals within the same field</li>
+<li>Supports journal selection decisions</li>
+<li>Gives a simple view of citation impact</li>
+</ul>
+
+<p><b>How to Use IPP Effectively:</b></p>
+<ul>
+<li>Check IPP along with SNIP and SJR</li>
+<li>Use it mainly for comparing journals in the same discipline</li>
+<li>Do not rely on IPP alone for decision-making</li>
+<li>Combine with indexing and peer review quality checks</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine a class where each student gets marks.
+<br><br>
+If you calculate the average marks of all students, you get an idea of how the class is performing overall.
+<br><br>
+Similarly, IPP tells us the average number of citations each paper in a journal gets.
+</p>
+
+<p><b>Conclusion:</b><br>
+IPP is a simple and useful metric that reflects the average citation impact of a journal, helping PhD scholars evaluate journal performance and make informed publication decisions.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q7: Explain h-index.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain h-index</h3>
+
+<p><b>Definition:</b><br>
+The h-index is a metric that measures both the productivity and citation impact of a researcher. A researcher has an h-index of ‘h’ if they have ‘h’ papers, each cited at least ‘h’ times.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+The h-index combines quantity (number of publications) and quality (citations). It avoids extreme values by balancing both factors. A higher h-index indicates consistent and impactful research output.
+</p>
+
+<ul>
+<li>Reflects both productivity and impact</li>
+<li>Ignores very low and extremely high citations</li>
+<li>Widely used for academic evaluation</li>
+<li>Available in Scopus, Web of Science, Google Scholar</li>
+</ul>
+
+<p><b>Example:</b><br>
+If a researcher has:
+<br>5 papers with citations: 10, 8, 5, 3, 1  
+<br>Then h-index = 3 (because 3 papers have at least 3 citations)
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Measures your research strength</li>
+<li>Important for academic promotions and funding</li>
+<li>Helps track career growth</li>
+<li>Encourages consistent quality publications</li>
+</ul>
+
+<p><b>How to Improve h-index:</b></p>
+<ul>
+<li>Publish quality research in indexed journals</li>
+<li>Choose impactful research topics</li>
+<li>Collaborate with other researchers</li>
+<li>Promote your research work</li>
+</ul>
+
+<p><b>Problem & Solution:</b><br>
+
+<b>Problem:</b><br>
+A researcher has published 6 papers with citation counts:<br>
+12, 10, 8, 5, 3, 1<br>
+Find the h-index.
+<br><br>
+
+<b>Solution:</b><br>
+Step 1: Arrange citations in descending order (already arranged)<br>
+Step 2: Find the largest number ‘h’ such that at least ‘h’ papers have ≥ ‘h’ citations
+<br><br>
+
+Paper 1 → 12 ≥ 1 ✔<br>
+Paper 2 → 10 ≥ 2 ✔<br>
+Paper 3 → 8 ≥ 3 ✔<br>
+Paper 4 → 5 ≥ 4 ✔<br>
+Paper 5 → 3 ≥ 5 ✘ (fails here)
+<br><br>
+
+<b>h-index = 4</b>
+</p>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine you wrote many notes and your friends use them.
+<br><br>
+If at least 4 of your notes are used by at least 4 friends each, your score is 4.
+<br><br>
+So h-index means how many of your works are consistently useful.
+</p>
+
+<p><b>Conclusion:</b><br>
+The h-index is a powerful and widely used metric that reflects both the productivity and impact of a researcher, making it essential for PhD scholars to track and improve.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q8: Explain g-index.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain g-index</h3>
+
+<p><b>Definition:</b><br>
+The g-index is a research metric that measures the productivity and impact of a researcher by giving more weight to highly cited papers. A researcher has a g-index of ‘g’ if the top ‘g’ papers together have at least g² (g squared) citations.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+The g-index was proposed to improve upon the h-index by giving more importance to highly cited papers. While h-index treats all qualifying papers equally, g-index highlights researchers who have a few highly influential publications.
+</p>
+
+<ul>
+<li>Gives more importance to highly cited papers</li>
+<li>Reflects overall citation performance</li>
+<li>Always greater than or equal to h-index</li>
+<li>Useful for identifying influential researchers</li>
+</ul>
+
+<p><b>Example:</b><br>
+If a researcher has citation counts: 20, 15, 10, 5, 2<br>
+We calculate cumulative citations:
+<br>20 → 20  
+<br>20+15 = 35  
+<br>35+10 = 45  
+<br>45+5 = 50  
+<br>50+2 = 52  
+<br><br>
+Now compare with g²:
+<br>1² = 1 ✔  
+<br>2² = 4 ✔  
+<br>3² = 9 ✔  
+<br>4² = 16 ✔  
+<br>5² = 25 ✔  
+<br><br>
+So, g-index = 5
+</p>
+
+<p><b>Problem & Solution:</b><br>
+
+<b>Problem:</b><br>
+A researcher has 5 papers with citations:<br>
+25, 10, 8, 4, 3<br>
+Find the g-index.
+<br><br>
+
+<b>Solution:</b><br>
+Step 1: Arrange citations in descending order (already arranged)<br>
+Step 2: Calculate cumulative citations:
+<br>25 → 25  
+<br>25+10 = 35  
+<br>35+8 = 43  
+<br>43+4 = 47  
+<br>47+3 = 50  
+<br><br>
+
+Step 3: Compare with g²:
+<br>1² = 1 ✔  
+<br>2² = 4 ✔  
+<br>3² = 9 ✔  
+<br>4² = 16 ✔  
+<br>5² = 25 ✔  
+<br><br>
+
+<b>g-index = 5</b>
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Highlights highly influential research papers</li>
+<li>Complements h-index for better evaluation</li>
+<li>Useful in academic promotions and funding decisions</li>
+<li>Encourages publishing impactful research</li>
+</ul>
+
+<p><b>How to Improve g-index:</b></p>
+<ul>
+<li>Publish high-quality research</li>
+<li>Focus on impactful topics</li>
+<li>Increase visibility and citations</li>
+<li>Collaborate with reputed researchers</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine you wrote some notes:
+<br><br>
+If a few of your notes are used by many students, you become more popular.
+<br><br>
+Even if not all notes are popular, a few very famous ones increase your score.
+<br><br>
+That’s what g-index measures — how powerful your best work is.
+</p>
+
+<p><b>Conclusion:</b><br>
+The g-index is an advanced metric that emphasizes highly cited papers, providing a deeper understanding of a researcher’s impact beyond the h-index.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q9: Explain i10-index.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain i10-index</h3>
+
+<p><b>Definition:</b><br>
+The i10-index is a research metric that indicates the number of publications by a researcher that have received at least 10 citations each.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+The i10-index is a simple and straightforward metric introduced by Google Scholar. It counts how many papers have reached a minimum citation threshold of 10. Unlike h-index or g-index, it does not consider higher citation counts beyond 10—it only checks whether a paper has crossed the threshold.
+</p>
+
+<ul>
+<li>Counts number of papers with ≥ 10 citations</li>
+<li>Simple and easy to calculate</li>
+<li>Available in Google Scholar profiles</li>
+<li>Does not measure citation depth beyond 10</li>
+</ul>
+
+<p><b>Example:</b><br>
+A researcher has 6 papers with citations:<br>
+15, 12, 10, 9, 5, 2<br><br>
+Only 3 papers have ≥ 10 citations<br>
+<b>i10-index = 3</b>
+</p>
+
+<p><b>Problem & Solution:</b><br>
+
+<b>Problem:</b><br>
+A researcher has published 8 papers with citations:<br>
+20, 18, 11, 10, 9, 8, 4, 1<br>
+Find the i10-index.
+<br><br>
+
+<b>Solution:</b><br>
+Step 1: Identify papers with ≥ 10 citations<br>
+20 ✔<br>
+18 ✔<br>
+11 ✔<br>
+10 ✔<br>
+9 ✘<br>
+8 ✘<br>
+4 ✘<br>
+1 ✘<br><br>
+
+Step 2: Count them → 4 papers<br>
+<b>i10-index = 4</b>
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Helps track number of impactful publications</li>
+<li>Easy way to monitor research progress</li>
+<li>Useful for academic evaluation and profiles</li>
+<li>Encourages consistent citation performance</li>
+</ul>
+
+<p><b>How to Improve i10-index:</b></p>
+<ul>
+<li>Publish quality research papers</li>
+<li>Choose relevant and trending topics</li>
+<li>Increase visibility of your work</li>
+<li>Promote research through academic platforms</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine you wrote many notes and each note is used by your friends.
+<br><br>
+If at least 10 friends use a note, it is considered good.
+<br><br>
+The i10-index counts how many of your notes are used by at least 10 people.
+</p>
+
+<p><b>Conclusion:</b><br>
+The i10-index is a simple yet useful metric that helps measure the number of impactful publications, making it a helpful tool for PhD scholars to track their research growth.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q10: Explain altmetrics.</b>
+<div class="answer"><div class="answer-content">
+
+<h3>Explain Altmetrics</h3>
+
+<p><b>Definition:</b><br>
+Altmetrics (alternative metrics) are measures that capture the online attention and engagement a research work receives beyond traditional citations, such as mentions in social media, news, blogs, and online platforms.
+</p>
+
+<p><b>Detailed Explanation:</b><br>
+Traditional metrics like Impact Factor and h-index focus only on citations in academic papers. Altmetrics provide a broader view by tracking how research is discussed, shared, and used in the digital world. These metrics reflect immediate and real-world impact rather than long-term academic citations.
+</p>
+
+<ul>
+<li>Tracks online mentions (Twitter, Facebook, blogs)</li>
+<li>Measures downloads, shares, and media coverage</li>
+<li>Provides faster feedback than citation-based metrics</li>
+<li>Represents societal and public impact of research</li>
+</ul>
+
+<p><b>Example:</b><br>
+A research paper on climate change is widely shared on Twitter, discussed in news articles, and cited in blogs. Even before receiving academic citations, it gains a high altmetric score due to online attention.
+</p>
+
+<p><b>Problem & Solution:</b><br>
+
+<b>Problem:</b><br>
+A research paper receives:
+<ul>
+<li>50 Twitter mentions</li>
+<li>10 news article mentions</li>
+<li>20 blog references</li>
+</ul>
+Explain its altmetric impact.
+<br><br>
+
+<b>Solution:</b><br>
+The paper has strong online visibility and engagement. Even if citation count is low, the high number of social media and media mentions indicates strong real-world impact. Hence, it has a high altmetric score.
+</p>
+
+<p><b>Practical Use for PhD Work:</b></p>
+<ul>
+<li>Measures immediate impact of research</li>
+<li>Helps promote research to wider audience</li>
+<li>Supports academic visibility and recognition</li>
+<li>Useful for interdisciplinary and applied research</li>
+</ul>
+
+<p><b>How to Use Altmetrics Effectively:</b></p>
+<ul>
+<li>Share research on social media platforms</li>
+<li>Create academic profiles (Google Scholar, ResearchGate)</li>
+<li>Engage with research communities online</li>
+<li>Publish in accessible platforms</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine you post your project online.
+<br><br>
+If many people like, share, and talk about it, your project becomes popular.
+<br><br>
+Even if teachers have not yet graded it, people already know it's good.
+<br><br>
+That’s what altmetrics measure — how popular and discussed your work is online.
+</p>
+
+<p><b>Conclusion:</b><br>
+Altmetrics provide a modern way of evaluating research impact by capturing online attention and engagement, making them an important complement to traditional citation-based metrics for PhD scholars.
+</p>
+
+</div>.</div></div>
+
+<div class="card"><b>Q10: Explain h-index vs g-index vs i10-index.</b>
+<div class="answer">The h-index measures both the productivity and impact of a researcher's publications,
+     while the g-index is a more recent metric that considers the total number of citations received by a researcher's publications.
+    <div class="answer-content">
+
+<h3>Explain h-index vs g-index vs i10-index</h3>
+
+<p><b>Definition:</b><br>
+h-index, g-index, and i10-index are research metrics used to measure the productivity and impact of a researcher based on citations of their publications.
+</p>
+
+<p><b>Detailed Comparison:</b></p>
+
+<table border="1" cellpadding="8" style="border-collapse: collapse;">
+<tr>
+<th>Metric</th>
+<th>Meaning</th>
+<th>Focus</th>
+<th>Key Idea</th>
+</tr>
+
+<tr>
+<td><b>h-index</b></td>
+<td>h papers with at least h citations</td>
+<td>Balance of quantity & quality</td>
+<td>Consistency of research impact</td>
+</tr>
+
+<tr>
+<td><b>g-index</b></td>
+<td>Top g papers have ≥ g² citations</td>
+<td>Highly cited papers</td>
+<td>Rewards strong impactful papers</td>
+</tr>
+
+<tr>
+<td><b>i10-index</b></td>
+<td>Number of papers with ≥10 citations</td>
+<td>Simple productivity</td>
+<td>Counts impactful papers</td>
+</tr>
+
+</table>
+
+<p><b>Example:</b><br>
+If a researcher has citations: 20, 15, 10, 5, 2
+<ul>
+<li>h-index = 3</li>
+<li>g-index = 5</li>
+<li>i10-index = 3</li>
+</ul>
+</p>
+
+<p><b>How to Become an Excellent Scholar Using These Indexes:</b></p>
+<ul>
+<li>Focus on <b>quality research</b>, not just number of papers</li>
+<li>Choose impactful and relevant research topics</li>
+<li>Publish in indexed journals (Scopus/WoS)</li>
+<li>Collaborate with experienced researchers</li>
+<li>Promote your work to increase citations</li>
+</ul>
+
+<p><b>Where Should You Use These Indexes?</b></p>
+<ul>
+<li>To evaluate <b>your own research performance</b></li>
+<li>While applying for <b>PhD, jobs, or promotions</b></li>
+<li>To compare <b>researchers in your field</b></li>
+<li>To track your academic growth</li>
+</ul>
+
+<p><b>How Useful Are These Indexes for Publishing Papers?</b></p>
+<ul>
+<li>They do <b>not directly decide publication</b></li>
+<li>But they reflect your research strength</li>
+<li>Higher index → better academic reputation</li>
+<li>Helps in funding, recognition, and collaborations</li>
+</ul>
+
+<p><b>Should You Check These Indexes for Other Papers/Researchers?</b></p>
+<ul>
+<li>Yes — helps identify <b>top researchers</b></li>
+<li>Useful for literature review</li>
+<li>Helps find strong collaborators</li>
+<li>Identifies high-impact research work</li>
+</ul>
+
+<p><b>How a 9th Grade Student Gets It:</b><br>
+Imagine three ways to measure a student:
+<ul>
+<li>h-index → How consistently good the student is</li>
+<li>g-index → How many top performances they have</li>
+<li>i10-index → How many times they scored above a certain mark</li>
+</ul>
+</p>
+
+<p><b>Conclusion:</b><br>
+h-index, g-index, and i10-index together provide a complete picture of a researcher’s performance. PhD scholars should use them strategically to improve research quality, visibility, and academic growth.
+</p>
+
+</div>
+    
+    </div></div>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 RPE Learning Portal | Build Impactful Research
+</div>
+
+<script>
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("active");
+    });
+});
+</script>
+
+</body>
+</html>
